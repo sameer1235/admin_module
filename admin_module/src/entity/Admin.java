@@ -1,26 +1,29 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="admin")
-
+@Table(name="admin1")
 public class Admin {
 		@Id
-		private int id;
+		private int A_id;
 		private String name;
 		private String passwords;
 		
-		@OneToOne(mappedBy="admin")
+		//@OneToOne(mappedBy="admin")
+		@OneToOne(cascade=CascadeType.ALL)
+		@JoinColumn(name="u_id")
 		private User user;
 		public int getId() {
-			return id;
+			return A_id;
 		}
 		public void setId(int id) {
-			this.id = id;
+			this.A_id = id;
 		}
 		public String getName() {
 			return name;

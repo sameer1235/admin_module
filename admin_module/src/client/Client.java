@@ -1,5 +1,9 @@
 package client;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import entity.Admin;
 import entity.User;
 import service.IUserService;
@@ -8,6 +12,10 @@ import service.UserServiceImpl;
 public class Client {
 	public static void main(String[] args) 
 	{
+		EntityManagerFactory fact = Persistence.createEntityManagerFactory("JPA-PU");
+		EntityManager em = fact.createEntityManager();
+		
+		em.getTransaction().begin();
 		
 	Admin admin= new Admin();
 	
@@ -15,29 +23,37 @@ public class Client {
 	IUserService service = new UserServiceImpl();
 
 // Create
-	/*
-admin.setId(1);
-admin.setName("XYZ");
-admin.setPassword("1234");
-
-user.setId(100);
-user.setName("yuvraj");
+/*
+user.setId(114);
+user.setName("Shaikh Amer");
 user.setType("user");
 user.setPassword("12345");
+//service.addUser(user);
 
-service.addUser(user);
+
+admin.setId(4);
+admin.setName("sam");
+admin.setPassword("1234");
 admin.setUser(user);
-System.out.println("Row added");
+em.persist(admin);
+em.getTransaction().commit();
+System.out.println("Record added ");
+em.close();
+fact.close();
 */
 
 // Retrieve
 
-user	= service.searchUserById(100);
+user	= service.searchUserById(111);
 System.out.println("ID is:"+user.getId());
 System.out.println("NAME is:"+user.getName());
 System.out.println("Type is:"+user.getType());
-	
 
+/*
+System.out.println("admin id is : "+admin.getId());
+System.out.println("admin id is : "+admin.getName());
+System.out.println("admin id is : "+admin.toString());
+*/
 
 /*
 

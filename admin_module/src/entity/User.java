@@ -12,19 +12,21 @@ import javax.persistence.Table;
 public class User {
 
 		@Id
-		private int id;
+		private int u_id;
 		private String name;
 		private String Types;
 		private String passwords;
 		
-		@OneToOne(cascade=CascadeType.ALL)
-		@JoinColumn(name="id")
+		@OneToOne(mappedBy="user")
+		//@OneToOne(cascade=CascadeType.ALL)
+	//	@JoinColumn(name="u_id")
 		private Admin admin;
+		
 		public int getId() {
-			return id;
+			return u_id;
 		}
 		public void setId(int id) {
-			this.id = id;
+			this.u_id = id;
 		}
 		public String getName() {
 			return name;
